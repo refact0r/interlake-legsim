@@ -25,3 +25,6 @@ storage/*
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Ignore credentials.yml.enc: it's useless without master key, but this keeps version control sane.
+/config/credentials.yml.enc
