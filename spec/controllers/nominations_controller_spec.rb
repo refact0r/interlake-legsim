@@ -1,10 +1,10 @@
 require 'rails_helper'  
 
-describe NominationsController do
+describe LeadershipNominationsController do
 
   #Delete this example and add some real ones
-  it "should use NominationsController" do
-    controller.should be_an_instance_of(NominationsController)
+  it "should use LeadershipNominationsController" do
+    controller.should be_an_instance_of(LeadershipNominationsController)
   end
 
 end

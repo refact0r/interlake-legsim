@@ -76,7 +76,7 @@
 <% else %>
 
   <ul><% legislation.cosponsorships.each do |cosponsorship| %>
-    <li><%= link_to_user cosponsorship.chamber_role %> - <%= cosponsorship.created_at.to_s(:long) %></li>
+    <li><%= link_to_user cosponsorship.chamber_role %> - <%= cosponsorship.created_at.to_fs(:long) %></li>
   <% end %></ul>
 
 <% end %>

@@ -40,7 +40,7 @@
               <tr>
                 <td><%= course.name %></td>
                 <td><%= course.institution.name %></td>
-                <td><%= course.created_at.to_s() %></td>
+                <td><%= course.created_at.to_fs() %></td>
                 <td><%= course.status.titleize %></td>
                 <td><%= link_to "manage", system_course_path( course ) %></td>
               </tr>
@@ -70,7 +70,7 @@
               <tr>
                 <td><%= course.name %></td>
                 <td><%= course.institution.name %></td>
-                <td><%= course.created_at.to_s() %></td>
+                <td><%= course.created_at.to_fs() %></td>
                 <td><%= course.status.titleize %></td>
                 <td><%= link_to "manage", system_course_path( course ) %></td>
               </tr>
@@ -100,7 +100,7 @@
               <tr>
                 <td><%= course.name %></td>
                 <td><%= course.institution.name %></td>
-                <td><%= course.created_at.to_s() %></td>
+                <td><%= course.created_at.to_fs() %></td>
                 <td><%= course.status.titleize %></td>
                 <td><%= link_to "manage", system_course_path( course ) %></td>
               </tr>

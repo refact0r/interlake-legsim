@@ -25,8 +25,8 @@
         <tr>
           <td>
             <%= vote.title %><br />
-            &nbsp;&nbsp;&nbsp;<b>Start At:</b> <%= vote.start_at.to_s(:long_with_time) %><br />
-            &nbsp;&nbsp;&nbsp;<b>Finish At:</b> <%= vote.finish_at.to_s(:long_with_time) %>
+            &nbsp;&nbsp;&nbsp;<b>Start At:</b> <%= vote.start_at.to_fs(:long_with_time) %><br />
+            &nbsp;&nbsp;&nbsp;<b>Finish At:</b> <%= vote.finish_at.to_fs(:long_with_time) %>
           </td>
           <td >
             <%= link_button_to "Edit&nbsp;Vote".html_safe, edit_vote_path(vote), :size => 'eighty', :class => 'btn blue-btn' %>
@@ -81,8 +81,8 @@
           <tr>
             <td>
               <%= vote.title %><br />
-              &nbsp;&nbsp;&nbsp;<b>Start At:</b> <%= vote.start_at.to_s(:long_with_time) %><br />
-              &nbsp;&nbsp;&nbsp;<b>Finish At:</b> <%= vote.finish_at.to_s(:long_with_time) %>
+              &nbsp;&nbsp;&nbsp;<b>Start At:</b> <%= vote.start_at.to_fs(:long_with_time) %><br />
+              &nbsp;&nbsp;&nbsp;<b>Finish At:</b> <%= vote.finish_at.to_fs(:long_with_time) %>
             </td>
             <td>
               <%= link_button_to "Edit&nbsp;Vote".html_safe, edit_vote_path(vote), :size => 'eighty', :class => 'btn blue-btn' %>

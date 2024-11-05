@@ -87,7 +87,7 @@ class VotesController < ApplicationController
       @motion.referral.update!( :status => 'scheduled' )
     end
 
-    flash_message("#{@vote.title} vote scheduled to start at #{@vote.start_at.to_s(:long_with_time)} and end at #{@vote.finish_at.to_s(:long_with_time)}")
+    flash_message("#{@vote.title} vote scheduled to start at #{@vote.start_at.to_fs(:long_with_time)} and end at #{@vote.finish_at.to_fs(:long_with_time)}")
     redirect_to_group_manage_votes_page( @motion.referral.group )
 
   end
@@ -131,7 +131,7 @@ class VotesController < ApplicationController
     @vote.update!( vote_params)
     @vote.motion.update!( motion_params )
 
-    flash_message("#{@vote.title} vote updated to start at #{@vote.start_at.to_s(:long_with_time)} and end at #{@vote.finish_at.to_s(:long_with_time)}")
+    flash_message("#{@vote.title} vote updated to start at #{@vote.start_at.to_fs(:long_with_time)} and end at #{@vote.finish_at.to_fs(:long_with_time)}")
     redirect_to edit_vote_path( @vote )
 #     redirect_to manage_votes_floor_path( @vote.motion.referral.group )
 
