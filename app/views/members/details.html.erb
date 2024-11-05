@@ -72,7 +72,7 @@
           <% @member.sponsored_legislation.each do |legislation| %>
             <tr>
               <td><%= link_to_legislation( legislation ) %></td>
-              <td><%= legislation.created_at.to_s(:long) %></td>
+              <td><%= legislation.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
           <tr>
@@ -82,7 +82,7 @@
           <% @member.cosponsorship.includes(:legislation).each do |cosponsorship| %>
             <tr>
               <td><%= link_to_legislation( cosponsorship.legislation ) %></td>
-              <td><%= cosponsorship.created_at.to_s(:long) %></td>
+              <td><%= cosponsorship.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
           <tr>
@@ -92,7 +92,7 @@
           <% @member.group_memberships.includes(:group).each do |group_membership| %>
             <tr>
               <td><%= link_to_group( group_membership.group ) %></td>
-              <td><%= group_membership.created_at.to_s(:long) %></td>
+              <td><%= group_membership.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
           <tr>
@@ -102,7 +102,7 @@
           <% @member.sent_letters.each do |letter| %>
             <tr>
               <td><%= link_to letter.subject, letter_path( letter ) %></td>
-              <td><%= letter.created_at.to_s(:long) %></td>
+              <td><%= letter.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
           <tr>
@@ -112,7 +112,7 @@
           <% @member.comments.includes( :discussion ).each do |comment| %>
             <tr>
               <td><%= link_to comment.discussion.title, discussion_path( comment.discussion ) %></td>
-              <td><%= comment.created_at.to_s(:long) %></td>
+              <td><%= comment.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
           <tr>
@@ -122,7 +122,7 @@
           <% @member.ballots.voted.includes( :vote ).each do |ballot| %>
             <tr>
               <td><%= link_to ballot.vote.motion.title, vote_path( ballot.vote ) %></td>
-              <td><%= ballot.created_at.to_s(:long) %></td>
+              <td><%= ballot.created_at.to_fs(:long) %></td>
             </tr>
           <% end %>
         </tbody>

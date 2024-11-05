@@ -17,7 +17,7 @@
       <tr>
         <td><%= link_to vote.motion.referral.legislation.reference, legislation_path( vote.motion.referral.legislation ) %></td>
         <td><%= vote.motion.action.titleize %></td>
-        <td><%= vote.finish_at.to_s(:long_with_time) %></td>
+        <td><%= vote.finish_at.to_fs(:long_with_time) %></td>
         <td class="vote-status <%= vote.outcome %>" style="text-align: center; padding-left:0px;">
           <%= vote.outcome.titleize %>
         </td>

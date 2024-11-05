@@ -8,8 +8,8 @@
     <h2>Vote on Motion Regarding <%= link_to vote.referral.legislation.reference, legislation_path( vote.referral.legislation ) %></h2>
     <br/>
     <p><strong style='color:#AA321E'>Type:</strong> <%= vote.motion.action.titleize %></p>
-    <p><strong style='color:#AA321E'>Starts:</strong> <%= vote.start_at.to_s(:long_with_time) %></p>
-    <p><strong style='color:#AA321E'>Concludes:</strong> <%= vote.finish_at.to_s(:long_with_time) %></p>
+    <p><strong style='color:#AA321E'>Starts:</strong> <%= vote.start_at.to_fs(:long_with_time) %></p>
+    <p><strong style='color:#AA321E'>Concludes:</strong> <%= vote.finish_at.to_fs(:long_with_time) %></p>
     <p><strong style='color:#AA321E'>Vote Threshold:</strong> <%= vote.threshold_to_text %></p>
 
     <div class="vote-status <%= vote.status_class %> clearfix">

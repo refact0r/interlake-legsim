@@ -14,7 +14,7 @@ module Legsim
     
     # we don't go in for any of that fancy cloud storage here, no thank you
     config.active_storage.service = :local
-    config.hosts << "ihs.legsim.westus2.cloudapp.azure.com"
+    config.hosts << "ihs.legsim.westus2.cloudapp.azure.com/system/"
 
     config.active_record.legacy_connection_handling = false
 

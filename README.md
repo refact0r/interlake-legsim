@@ -9,7 +9,7 @@ When you try to the run the app...you will have no credentials. This is because 
 ## NEED SYSTEM ACCESS?
 
 I am unclear if my system login (and all my test logins, and all the student logins from last year) will still exist. Regardless, what you need to do:  
-* Append `/system/` to the web link to access the system menu
+* Append `/system/` to the |web link to access the system menu
 * Give me the link to your LegSim and ask me to try logging in and adding you as a system user OR
 * If my login doesn't work, use `SystemUser.create(email:"user@example.com", password:"ENTER_PASSWORD", password_confirmation: "ENTER_PASSWORD")` in the Rails console (obviously, filling in all necessary fields)
 
@@ -38,4 +38,99 @@ Acknowledgements (for fun and rainbows, and also because I can't think of anythi
 * Michael O'Byrne - for signing my timesheets and giving me credit, even when they were two months late.
 * You guys - for keeping the dream (and Interlake's post-exams Gov lesson plans) alive!
 
+## MAKING LEGSIM WORK IN FALL 2024
+
+Having updated pretty much everything, a lot of things broke for us and we needed to set a lot of stuff up. Here's some of the issues we had.
+
+- MySQL needs to run rake db:create db:migrate to create a DB. It also doesn't work on Windows for some reason: I used WSL with Ubuntu to make this work.
+- application.rb has credentials for mailer only , *not* anything useful. Running rails credentials:edit (after the db stuff) is necessary to make credentials. We're using root for now for both db and gmail, with Elavon apparently disabled.
+- Despite comments, AuthenticatedTestHelper is not supposed to be created in the rails_helper.rb file (or the spec_helper.rb file). For information on both, look at RSpec documentation.
+- After updates, references to "spec/controllers/admin/FILE_NAME" or other similar files nested a level below controllers or helpers broke. RSpec needed to reference them according to the filestructure, where the folders are modules.
+- I just commented out examples_helper_spec.rb entirely. I don't think it does anything. I hope not.
+- nominations_controller_spec.rb needs to have describe LeaderNominationsController, not describe NominationsController.
+- TimeWithZone#to_s(:db) is deprecated. Use TimeWithZone#to_fs(:db) instead. <= Resolved, formerly killing screen but nonfatal.
+- On recent launches, I get a string of outputs FFFFFFFFFFFFFFFFFFF.......................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.\*...\*\*\*...\*.....\*\*\*..\*\*\*\*\*\*..\*.\*\*.... that gradually grows at a decreasing rate: why, I don't know.
+- Errors from Halloween (spooky!)
+  123) Users::SessionsController route generation should route the new sessions action correctly
+       Failure/Error: route_for(:controller => 'sessions', :action => 'new').should == "/login"
+
+       NoMethodError:
+         undefined method `route_for' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteGeneration "should route the new sessions action correctly" (./spec/controllers/sessions_controller_spec.rb:107)>
+         Did you mean?  route_to
+       # ./spec/controllers/sessions_controller_spec.rb:108:in `block (3 levels) in <top (required)>'
+
+  124) Users::SessionsController route generation should route the create sessions correctly
+       Failure/Error: route_for(:controller => 'sessions', :action => 'create').should == "/session"
+
+       NoMethodError:
+         undefined method `route_for' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteGeneration "should route the create sessions correctly" (./spec/controllers/sessions_controller_spec.rb:110)>
+         Did you mean?  route_to
+       # ./spec/controllers/sessions_controller_spec.rb:111:in `block (3 levels) in <top (required)>'
+
+  125) Users::SessionsController route generation should route the destroy sessions action correctly
+       Failure/Error: route_for(:controller => 'sessions', :action => 'destroy').should == "/logout"
+
+       NoMethodError:
+         undefined method `route_for' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteGeneration "should route the destroy sessions action correctly" (./spec/controllers/sessions_controller_spec.rb:113)>
+         Did you mean?  route_to
+       # ./spec/controllers/sessions_controller_spec.rb:114:in `block (3 levels) in <top (required)>'
+
+  126) Users::SessionsController route recognition should generate params from GET /login correctly
+       Failure/Error: params_from(:get, '/login').should == {:controller => 'sessions', :action => 'new'}
+
+       NoMethodError:
+         undefined method `params_from' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteRecognition "should generate params from GET /login correctly" (./spec/controllers/sessions_controller_spec.rb:119)>
+       # ./spec/controllers/sessions_controller_spec.rb:120:in `block (3 levels) in <top (required)>'
+
+  127) Users::SessionsController route recognition should generate params from POST /session correctly
+       Failure/Error: params_from(:post, '/session').should == {:controller => 'sessions', :action => 'create'}
+
+       NoMethodError:
+         undefined method `params_from' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteRecognition "should generate params from POST /session correctly" (./spec/controllers/sessions_controller_spec.rb:122)>
+       # ./spec/controllers/sessions_controller_spec.rb:123:in `block (3 levels) in <top (required)>'
+
+  128) Users::SessionsController route recognition should generate params from DELETE /session correctly
+       Failure/Error: params_from(:delete, '/logout').should == {:controller => 'sessions', :action => 'destroy'}
+
+       NoMethodError:
+         undefined method `params_from' for #<RSpec::ExampleGroups::UsersSessionsController_3::RouteRecognition "should generate params from DELETE /session correctly" (./spec/controllers/sessions_controller_spec.rb:125)>
+       # ./spec/controllers/sessions_controller_spec.rb:126:in `block (3 levels) in <top (required)>'
+
+  129) Users::SessionsController named routing should route session_path() correctly
+       Failure/Error: get :new
+
+       AbstractController::ActionNotFound:
+         Could not find devise mapping for path "/users/sign_in".
+         This may happen for two reasons:
+
+         1) You forgot to wrap your route inside the scope block. For example:
+
+           devise_scope :user do
+             get "/some/route" => "some_devise_controller"
+           end
+
+         2) You are testing a Devise controller bypassing the router.
+            If so, you can explicitly tell Devise which mapping to use:
+
+            @request.env["devise.mapping"] = Devise.mappings[:user]
+       # ./spec/controllers/sessions_controller_spec.rb:132:in `block (3 levels) in <top (required)>'
+
+  130) Users::SessionsController named routing should route new_session_path() correctly
+       Failure/Error: get :new
+
+       AbstractController::ActionNotFound:
+         Could not find devise mapping for path "/users/sign_in".
+         This may happen for two reasons:
+
+         1) You forgot to wrap your route inside the scope block. For example:
+
+           devise_scope :user do
+             get "/some/route" => "some_devise_controller"
+           end
+
+         2) You are testing a Devise controller bypassing the router.
+            If so, you can explicitly tell Devise which mapping to use:
+
+            @request.env["devise.mapping"] = Devise.mappings[:user]
+       # ./spec/controllers/sessions_controller_spec.rb:132:in `block (3 levels) in <top (required)>'
 

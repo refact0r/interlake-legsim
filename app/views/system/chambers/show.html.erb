@@ -3,7 +3,7 @@
   <h3><%= @chamber.course.name %></h3>
 
   <table>
-    <tr><th>Created</th><td><%= @chamber.created_at.to_s(:short_with_year) %></td></tr>
+    <tr><th>Created</th><td><%= @chamber.created_at.to_fs(:short_with_year) %></td></tr>
     <tr><th>Scenerio</th><td><%= @chamber.scenerio_title %></td></tr>
   </table>
 
