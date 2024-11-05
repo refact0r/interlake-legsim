@@ -4,7 +4,7 @@ Hello Interlake interns! I'm not accustomed to using GitHub (I know...it's funny
 
 ## MISSING CREDENTIALS?
 
-When you try to the run the app...you will have no credentials. This is because the `credentials.yml.enc` file does not exist anymore. When you run `rails credentials:edit` for the first time, it will generate a `credentials.yml.enc` and a `master.key` file for you. This is pretty simple Ruby on Rails stuff...you can look it up if you're curious. But short and sweet, your credentials file will be encrypted with the key from `master.key` so you'll need to run `rails credentials:edit` to actually edit your credentials. And yes, you need these.  
+When you try to the run the app...you will have no credentials. This is because the `credentials.yml.enc` file does not exist anymore. When you run `rails credentials:edit` for the first time, it will generate a `credentials.yml.enc` and a `master.key` file for you. This is pretty simple Ruby on Rails stuff...you can look it up if you're curious. But short and sweet, your credentials file will be encrypted with the key from `master.key` so you'll need to run `rails credentials:edit` to actually edit your credentials. And yes, you need these. To run `rails credentials:edit` for the first time you need to comment out the two places where credentials are used first. In some environments you may also need to run it and specify an editor such as `EDITOR 'code --wait' /bin/rails credentials:edit` in order to open the credentials file in an editor. Once you have the credentials file open you can copy most of `credentials.yml.example` and set usernames and passwords for the gmail and database credentials (usernames and passwords) to `root`.
 
 ## NEED SYSTEM ACCESS?
 
