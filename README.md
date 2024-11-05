@@ -9,7 +9,7 @@ When you try to the run the app...you will have no credentials. This is because 
 ## NEED SYSTEM ACCESS?
 
 I am unclear if my system login (and all my test logins, and all the student logins from last year) will still exist. Regardless, what you need to do:  
-* Append `/system/` to the web link to access the system menu
+* Append `/system/` to the |web link to access the system menu
 * Give me the link to your LegSim and ask me to try logging in and adding you as a system user OR
 * If my login doesn't work, use `SystemUser.create(email:"user@example.com", password:"ENTER_PASSWORD", password_confirmation: "ENTER_PASSWORD")` in the Rails console (obviously, filling in all necessary fields)
 
