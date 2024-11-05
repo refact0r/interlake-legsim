@@ -9,7 +9,7 @@ When you try to the run the app...you will have no credentials. This is because 
 ## NEED SYSTEM ACCESS?
 
 I am unclear if my system login (and all my test logins, and all the student logins from last year) will still exist. Regardless, what you need to do:  
-* Append `/system/` to the |web link to access the system menu
+* Append `/system/` to the web link to access the system menu
 * Give me the link to your LegSim and ask me to try logging in and adding you as a system user OR
 * If my login doesn't work, use `SystemUser.create(email:"user@example.com", password:"ENTER_PASSWORD", password_confirmation: "ENTER_PASSWORD")` in the Rails console (obviously, filling in all necessary fields)
 
@@ -49,6 +49,7 @@ Having updated pretty much everything, a lot of things broke for us and we neede
 - I just commented out examples_helper_spec.rb entirely. I don't think it does anything. I hope not.
 - nominations_controller_spec.rb needs to have describe LeaderNominationsController, not describe NominationsController.
 - TimeWithZone#to_s(:db) is deprecated. Use TimeWithZone#to_fs(:db) instead. <= Resolved, formerly killing screen but nonfatal.
+- 
 - On recent launches, I get a string of outputs FFFFFFFFFFFFFFFFFFF.......................FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.\*...\*\*\*...\*.....\*\*\*..\*\*\*\*\*\*..\*.\*\*.... that gradually grows at a decreasing rate: why, I don't know.
 - Errors from Halloween (spooky!)
   123) Users::SessionsController route generation should route the new sessions action correctly
