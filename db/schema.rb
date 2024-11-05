@@ -518,7 +518,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
     t.integer "group_id"
     t.integer "chamber_id"
   end
-
+  
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id
 end

@@ -7,7 +7,7 @@
     <h2><%= link_to_legislation( legislation )%></h2>
     <br/>
     <p><strong style='color:#AA321E'>Sponsor:</strong> <%= link_to_user( legislation.sponsor ) %></p>
-    <p><strong style='color:#AA321E'>Submitted:</strong> <%= legislation.created_at.to_s(:long_with_time) %></p>
+    <p><strong style='color:#AA321E'>Submitted:</strong> <%= legislation.created_at.to_fs(:long_with_time) %></p>
     <p><strong style='color:#AA321E'>Cosponsors:</strong> <%= legislation.cosponsors.count %></p>
     <p><strong style='color:#AA321E'>Proposed Amendments:</strong> <%= legislation.amendments.count %></p>
     <!--

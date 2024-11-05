@@ -34,7 +34,7 @@
               <tr>
                 <td><%= course.name %></td>
                 <td><%= course.institution.name %></td>
-                <td><%= course.created_at.to_s(:short_with_year) %></td>
+                <td><%= course.created_at.to_fs(:short_with_year) %></td>
                 <td><%= course.status.titleize %></td>
                 <td><%= link_to "manage", system_course_path( course ) %></td>
               </tr>
