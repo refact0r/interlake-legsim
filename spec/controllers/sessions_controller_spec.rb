@@ -12,7 +12,7 @@ RSpec.describe Users::SessionsController do
   before do 
     @user  = mock_user
     @login_params = { :login => 'quentin', :password => 'test' }
-    User.stub!(:authenticate).with(@login_params[:login], @login_params[:password]).and_return(@user)
+    User.stub(:authenticate).with(@login_params[:login], @login_params[:password]).and_return(@user)
   end
   def do_create
     post :create, @login_params
@@ -28,16 +28,16 @@ RSpec.describe Users::SessionsController do
           describe "and ask #{want_remember_me ? 'to' : 'not to'} be remembered" do 
             before do
               @ccookies = mock('cookies')
-              controller.stub!(:cookies).and_return(@ccookies)
-              @ccookies.stub!(:[]).with(:auth_token).and_return(token_value)
-              @ccookies.stub!(:delete).with(:auth_token)
-              @ccookies.stub!(:[]=)
-              @user.stub!(:remember_me) 
-              @user.stub!(:refresh_token) 
-              @user.stub!(:forget_me)
-              @user.stub!(:remember_token).and_return(token_value) 
-              @user.stub!(:remember_token_expires_at).and_return(token_expiry)
-              @user.stub!(:remember_token?).and_return(has_request_token == :valid)
+              controller.stub(:cookies).and_return(@ccookies)
+              @ccookies.stub(:[]).with(:auth_token).and_return(token_value)
+              @ccookies.stub(:delete).with(:auth_token)
+              @ccookies.stub(:[]=)
+              @user.stub(:remember_me) 
+              @user.stub(:refresh_token) 
+              @user.stub(:forget_me)
+              @user.stub(:remember_token).and_return(token_value) 
+              @user.stub(:remember_token_expires_at).and_return(token_expiry)
+              @user.stub(:remember_token?).and_return(has_request_token == :valid)
               if want_remember_me
                 @login_params[:remember_me] = '1'
               else 
@@ -105,13 +105,13 @@ end
 RSpec.describe Users::SessionsController do
   describe "route generation" do
     it "should route the new sessions action correctly" do
-      route_for(:controller => 'sessions', :action => 'new').should == "/login"
+      route_to(:controller => 'sessions', :action => 'new').should == "/login"
     end
     it "should route the create sessions correctly" do
-      route_for(:controller => 'sessions', :action => 'create').should == "/session"
+      route_to(:controller => 'sessions', :action => 'create').should == "/session"
     end
     it "should route the destroy sessions action correctly" do
-      route_for(:controller => 'sessions', :action => 'destroy').should == "/logout"
+      route_to(:controller => 'sessions', :action => 'destroy').should == "/logout"
     end
   end
   

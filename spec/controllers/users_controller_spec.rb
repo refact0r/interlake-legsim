@@ -95,31 +95,31 @@ end
 describe UsersController do
   describe "route generation" do
     it "should route users's 'index' action correctly" do
-      route_for(:controller => 'users', :action => 'index').should == "/users"
+      route_to(:controller => 'users', :action => 'index').should == "/users"
     end
     
     it "should route users's 'new' action correctly" do
-      route_for(:controller => 'users', :action => 'new').should == "/signup"
+      route_to(:controller => 'users', :action => 'new').should == "/signup"
     end
     
     it "should route {:controller => 'users', :action => 'create'} correctly" do
-      route_for(:controller => 'users', :action => 'create').should == "/register"
+      route_to(:controller => 'users', :action => 'create').should == "/register"
     end
     
     it "should route users's 'show' action correctly" do
-      route_for(:controller => 'users', :action => 'show', :id => '1').should == "/users/1"
+      route_to(:controller => 'users', :action => 'show', :id => '1').should == "/users/1"
     end
     
     it "should route users's 'edit' action correctly" do
-      route_for(:controller => 'users', :action => 'edit', :id => '1').should == "/users/1/edit"
+      route_to(:controller => 'users', :action => 'edit', :id => '1').should == "/users/1/edit"
     end
     
     it "should route users's 'update' action correctly" do
-      route_for(:controller => 'users', :action => 'update', :id => '1').should == "/users/1"
+      route_to(:controller => 'users', :action => 'update', :id => '1').should == "/users/1"
     end
     
     it "should route users's 'destroy' action correctly" do
-      route_for(:controller => 'users', :action => 'destroy', :id => '1').should == "/users/1"
+      route_to(:controller => 'users', :action => 'destroy', :id => '1').should == "/users/1"
     end
   end
   
