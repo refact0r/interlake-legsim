@@ -140,5 +140,5 @@ rails db:schema:load
 try to run the server:
 
 ```bash
-rails -s
+rails server
 ```
