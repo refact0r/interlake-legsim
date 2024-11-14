@@ -37,7 +37,7 @@ class Admin::ChambersController < ApplicationController
 
   def init_survey_questions
     @chamber = Chamber.find( params[:id] )
-    @chamber.load_survey_questions( @chamber.scenerio )
+    @chamber.load_survey_questions( @chamber.scenario )
 
     display_message("Survey Questions have been reloaded",:attention)
     redirect_to( edit_survey_questions_admin_chamber_path( @chamber ) )
@@ -54,7 +54,7 @@ class Admin::ChambersController < ApplicationController
 
   def init_constituencies
     @chamber = Chamber.find( params[:id] )
-    @chamber.load_constituencies( @chamber.scenerio )
+    @chamber.load_constituencies( @chamber.scenario )
 
     display_message("Constituencies have been reloaded",:attention)
     redirect_to( edit_constituencies_admin_chamber_path( @chamber ) )
@@ -70,7 +70,7 @@ class Admin::ChambersController < ApplicationController
 
   def init_committees
     @chamber = Chamber.find( params[:id] )
-    @chamber.load_committees( @chamber.scenerio )
+    @chamber.load_committees( @chamber.scenario )
 
     display_message("Committees have been reloaded",:attention)
     redirect_to( edit_committees_admin_chamber_path( @chamber ) )
@@ -86,7 +86,7 @@ class Admin::ChambersController < ApplicationController
 
   def init_legislative_types
     @chamber = Chamber.find( params[:id] )
-    @chamber.load_legislative_types( @chamber.scenerio )
+    @chamber.load_legislative_types( @chamber.scenario )
 
     display_message("Legislative Types have been reloaded",:attention)
     redirect_to( edit_legislative_types_admin_chamber_path( @chamber ) )

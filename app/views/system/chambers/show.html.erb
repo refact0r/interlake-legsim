@@ -4,7 +4,7 @@
 
   <table>
     <tr><th>Created</th><td><%= @chamber.created_at.to_fs(:short_with_year) %></td></tr>
-    <tr><th>Scenerio</th><td><%= @chamber.scenerio_title %></td></tr>
+    <tr><th>Scenario</th><td><%= @chamber.scenario_title %></td></tr>
   </table>
 
   <%= button_to "Delete Chamber", system_course_chamber_path( @chamber.course, @chamber ), :size => 'sixty', :confirm => "Are you sure you wish to delete this chamber? The action is irreversible.", :method => 'delete' %>
