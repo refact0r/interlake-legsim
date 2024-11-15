@@ -55,3 +55,6 @@ Having updated pretty much everything, a lot of things broke for us and we neede
 - (11/14) Generally, it looks like it's a mix of outdated files (see the branch for specifics) and Devise in particular acting up, but this is all irrelevant because today we found out that it's rails s and not rails -s that launches the server, which is rather exasperating. It does work, though.
 - (11/14) Fixed all instances of scenerio to scenario; changing the typo on your end requires rebuilding the database or running the following command in mySQL to rename the column more easily (do this):
 ALTER TABLE chambers RENAME COLUMN scenerio TO scenario;
+- (11/15) legacy_ in many column names was removed. Side effects are unknown, but seems to work fine.
+- (11/15) \\wsl.localhost\Ubuntu\home\caden-ko\LegSim\interlake-legsim\app\assets\images\menu-instruction.png and similar files act as tabs. Need to change this, it's outdated and looks pretty bad.
+- Also, some of the text in forms is sans-serif instead of serif: why, I don't know.
