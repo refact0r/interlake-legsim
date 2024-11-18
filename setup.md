@@ -142,3 +142,29 @@ try to run the server:
 ```bash
 rails server
 ```
+
+now you should be able to access the site at the link provided in the terminal, something like `http://127.0.0.1:3000/`.
+
+by default, it will redirect you to the user sign in page. this page is for student users. to access the system menu, go to `/system` to the link. it will show a different login page.
+
+since there are no system users yet, you'll have to create one. create a new terminal, enter the legsim directory, and run:
+
+```bash
+rails console
+```
+
+you can create a new user by running:
+
+```ruby
+SystemUser.create(email:"user@example.com", password:"password", password_confirmation: "password")
+```
+
+now you should be able to log in as a system user. note that all of the login buttons are broken and you will have to press enter inside a text field to submit the form.
+
+once you're logged in, you can create a new course by clicking on the 'Courses' tab and then clicking 'Create New Course' and filling in the form.
+
+next, create a new chamber by clicking 'Create New Chamber' and filling in the form.
+
+now you can create normal users (students) by going to the root / route, which will redirect you to the user sign in page. click 'Create New Account' and fill in the form. it may error out, but that's fine. you can verify that the user was created by going to `/system/users` and checking the chamber's number of users.
+
+once a user is created, you can properly log in as a student.

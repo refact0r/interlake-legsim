@@ -424,16 +424,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
   end
 
   create_table "system_users", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "login", limit: 40
+    t.string "legacy_login", limit: 40
     t.string "first_name", limit: 100, default: ""
     t.string "last_name", limit: 100, default: ""
     t.string "email", limit: 100
-    t.string "crypted_password", limit: 40
-    t.string "salt", limit: 40
+    t.string "legacy_crypted_password", limit: 40
+    t.string "legacy_salt", limit: 40
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.string "remember_token", limit: 40
-    t.datetime "remember_token_expires_at", precision: nil
+    t.string "legacy_remember_token", limit: 40
+    t.datetime "legacy_remember_token_expires_at", precision: nil
     t.string "activation_code", limit: 40
     t.datetime "activated_at", precision: nil
     t.string "state", default: "passive"
@@ -462,23 +462,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
   end
 
   create_table "users", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "login", limit: 40
+    t.string "legacy_login", limit: 40
     t.string "first_name", limit: 100, default: ""
     t.string "last_name", limit: 100, default: ""
     t.string "email", limit: 100
     t.integer "course_id"
     t.integer "last_chamber_id"
-    t.string "crypted_password", limit: 40
-    t.string "salt", limit: 40
+    t.string "legacy_crypted_password", limit: 40
+    t.string "legacy_salt", limit: 40
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.string "remember_token", limit: 40
-    t.datetime "remember_token_expires_at", precision: nil
+    t.string "legacy_remember_token", limit: 40
+    t.datetime "legacy_remember_token_expires_at", precision: nil
     t.string "activation_code", limit: 40
     t.datetime "activated_at", precision: nil
     t.string "state", default: "passive"
     t.datetime "deleted_at", precision: nil
-    t.string "password_reset_code", limit: 40
+    t.string "legacy_password_reset_code", limit: 40
     t.boolean "agreement", default: false
     t.string "payment_token"
     t.string "payment_ref"
@@ -496,7 +496,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
     t.datetime "confirmation_sent_at", precision: nil
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email", "course_id"], name: "index_users_on_email_and_course_id", unique: true
-    t.index ["login", "course_id"], name: "index_users_on_login_and_course_id", unique: true
+    t.index ["legacy_login", "course_id"], name: "index_users_on_legacy_login_and_course_id", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

@@ -5,7 +5,7 @@ require 'net/smtp'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable, :validatable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, authentication_keys: [:email,:course_id]
 
   validates_presence_of :email
