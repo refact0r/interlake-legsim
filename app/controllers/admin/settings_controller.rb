@@ -3,7 +3,7 @@ class Admin::SettingsController < ApplicationController
   def index
 
     @chamber = current_chamber
-    @default_settings = YAML.load_file( Rails.root.join('config', 'scenerios', "#{@chamber.scenerio}.yml") )['chamber_settings']
+    @default_settings = YAML.load_file( Rails.root.join('config', 'scenarios', "#{@chamber.scenario}.yml") )['chamber_settings']
 
     @page_title = @chamber.name
     @page_description = "Settings Management"
@@ -38,7 +38,7 @@ class Admin::SettingsController < ApplicationController
 #   end
 #
 #   def init
-#     @current_chamber.load_chamber_settings( @current_chamber.scenerio )
+#     @current_chamber.load_chamber_settings( @current_chamber.scenario )
 #
 #     display_message("Settings have been reloaded",:attention)
 #     redirect_to( admin_settings_path )

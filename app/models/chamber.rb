@@ -2,7 +2,7 @@ class Chamber < ActiveRecord::Base
 
   validates_presence_of :name, :message => "Chamber must have a name."
   validates_presence_of :course_id, :message => "Chamber must have a Course."
-  validates_presence_of :scenerio, :message => "Chamber must have a scenerio."
+  validates_presence_of :scenario, :message => "Chamber must have a scenario."
 
   belongs_to :course
   has_many :legislative_types
@@ -78,8 +78,8 @@ class Chamber < ActiveRecord::Base
     "#{course.title} - #{name}"
   end
 
-  def scenerio_title
-    case scenerio
+  def scenario_title
+    case scenario
       when 'us_house_of_representatives' then 'US House of Representatives'
       when 'us_senate' then 'US Senate'
     end
@@ -120,7 +120,7 @@ class Chamber < ActiveRecord::Base
 
   def load_chamber_settings( default_chamber_settings = false )
 
-    default_chamber_settings = YAML.load_file( Rails.root.join('config', 'scenerios', "#{scenerio}.yml") )['chamber_settings'] unless default_chamber_settings
+    default_chamber_settings = YAML.load_file( Rails.root.join('config', 'scenarios', "#{scenario}.yml") )['chamber_settings'] unless default_chamber_settings
 
     default_chamber_settings.each do |chamber_setting|
       chamber_settings.create!(:name => chamber_setting['name'], :value => chamber_setting['default'])
@@ -130,7 +130,7 @@ class Chamber < ActiveRecord::Base
 
   def initialize_from_config
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', "#{scenerio}.yml") )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', "#{scenario}.yml") )
 
     load_chamber_settings
 
@@ -174,7 +174,7 @@ class Chamber < ActiveRecord::Base
 
   def initialize_content_from_config
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', "#{scenerio}_content.yml") )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', "#{scenario}_content.yml") )
 
     data['tutorials'].each do |tutorial_data|
       tutorials.create!( tutorial_data  )
@@ -190,11 +190,11 @@ class Chamber < ActiveRecord::Base
 
   end
 
-  def load_committees( scenerio )
+  def load_committees( scenario )
 
     committees.destroy_all
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', scenerio, 'committees.yml') )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', scenario, 'committees.yml') )
 
     data['committees'].each do |committee_data|
       committees.create!( committee_data  )
@@ -202,11 +202,11 @@ class Chamber < ActiveRecord::Base
 
   end
 
-  def load_contents( scenerio )
+  def load_contents( scenario )
 
     contents.destroy_all
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', scenerio, 'contents.yml') )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', scenario, 'contents.yml') )
     data['contents'].each do |content_data|
       contents.create!( content_data  )
     end
@@ -214,33 +214,33 @@ class Chamber < ActiveRecord::Base
   end
 
 
-  def load_constituencies( scenerio )
+  def load_constituencies( scenario )
 
     constituencies.destroy_all
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', scenerio, 'constituencies.yml') )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', scenario, 'constituencies.yml') )
     data['constituencies'].each do |constituency_data|
       constituencies.create!( constituency_data  )
     end
 
   end
 
-  def load_survey_questions( scenerio )
+  def load_survey_questions( scenario )
 
     survey_questions.destroy_all
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', scenerio, 'survey_questions.yml') )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', scenario, 'survey_questions.yml') )
     data['survey_questions'].each do |survey_question_data|
       survey_questions.create!( survey_question_data  )
     end
 
   end
 
-  def load_legislative_types( scenerio )
+  def load_legislative_types( scenario )
 
     legislative_types.destroy_all
 
-    data = YAML.load_file( Rails.root.join('config', 'scenerios', scenerio, 'legislative_types.yml') )
+    data = YAML.load_file( Rails.root.join('config', 'scenarios', scenario, 'legislative_types.yml') )
     data['legislative_types'].each do |legislative_type_data|
       legislative_types.create!( legislative_type_data  )
     end

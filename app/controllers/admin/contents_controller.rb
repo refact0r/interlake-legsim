@@ -52,7 +52,7 @@ class Admin::ContentsController < ApplicationController
   end
 
   def init
-    @current_chamber.load_contents( @current_chamber.scenerio )
+    @current_chamber.load_contents( @current_chamber.scenario )
 
     display_message("Contents have been reloaded",:attention)
     redirect_to( admin_contents_path )
