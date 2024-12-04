@@ -5,7 +5,7 @@ require 'net/smtp'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable, :validatable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, authentication_keys: [:email,:course_id]
 
   validates_presence_of :email
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
 
       views.push(
         {
-          :week => "#{start_at.to_s(:short)} - #{end_at.to_s(:short)}",
+          :week => "#{start_at.to_fs(:short)} - #{end_at.to_fs(:short)}",
           :count => actions.count(:all, :conditions => ['created_at > ? AND created_at <= ?',start_at,end_at])
         }
       )
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
 
       views.push(
         {
-          :week => "#{start_at.to_s(:short)} - #{end_at.to_s(:short)}",
+          :week => "#{start_at.to_fs(:short)} - #{end_at.to_fs(:short)}",
           :count => actions.count(:all, :conditions => ['created_at > ? AND created_at <= ?',start_at,end_at])
         }
       )

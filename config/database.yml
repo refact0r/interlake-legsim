@@ -18,7 +18,8 @@ development:
   database: legsim
   password: root
   #socket: /tmp/mysql.sock
-  # adapter: mysql2
+  adapter: mysql2
+  host: localhost
   # database: legsim
   # username: foo
   # password:

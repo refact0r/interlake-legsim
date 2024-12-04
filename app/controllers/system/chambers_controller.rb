@@ -59,6 +59,6 @@ class System::ChambersController < SystemController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chamber_params
-      params.require(:chamber).permit(:name,:scenerio,:course_id)
+      params.require(:chamber).permit(:name,:scenario,:course_id)
     end 
 end

@@ -24,9 +24,9 @@ RSpec.describe Vote, type: :model do
 #       before_vote = Vote.make( :start_at => before )
 #       after_vote = Vote.make( :start_at => after )
 #
-#       puts before_vote.start_at.to_s(:long_with_time)
+#       puts before_vote.start_at.to_fs(:long_with_time)
 #       Time.zone = "Pacific Time (US & Canada)"
-#       puts before_vote.reload.start_at.to_s(:long_with_time)
+#       puts before_vote.reload.start_at.to_fs(:long_with_time)
 #
 #       Vote.after_start_at.should == [before_vote]
 #

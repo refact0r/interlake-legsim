@@ -1,10 +1,13 @@
 require File.dirname(__FILE__) + '/../spec_helper'
+require 'rails_helper'
+
+
 
 # Be sure to include AuthenticatedTestHelper in spec/spec_helper.rb instead
 # Then, you can remove it from this and the units test.
-include AuthenticatedTestHelper
+# include AuthenticatedTestHelper
 
-describe SessionsController do
+RSpec.describe Users::SessionsController do
   fixtures        :users
   before do 
     @user  = mock_user
@@ -99,7 +102,7 @@ describe SessionsController do
   
 end
 
-describe SessionsController do
+RSpec.describe Users::SessionsController do
   describe "route generation" do
     it "should route the new sessions action correctly" do
       route_for(:controller => 'sessions', :action => 'new').should == "/login"

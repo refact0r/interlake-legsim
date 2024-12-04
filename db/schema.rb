@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
     t.integer "course_id"
     t.datetime "created_at", precision: nil
     t.datetime "updated_at", precision: nil
-    t.string "scenerio", default: "us_house_of_representatives"
+    t.string "scenario", default: "us_house_of_representatives"
   end
 
   create_table "comments", id: :integer, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -519,6 +519,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_011933) do
     t.integer "chamber_id"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

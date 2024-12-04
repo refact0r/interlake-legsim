@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
       @user = @authorization_code.chamber.course.users.new( user_params )
       if @user && @user.valid?
-        @user.skip_confirmation_notification!
+        # @user.skip_confirmation_notification!
         @user.save!
         chamber_role = @authorization_code.create_chamber_role( @user )
       end
@@ -37,8 +37,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
         if @user.course.payment_elavon?
           redirect_to payments_elavon_path
         elsif @user.course.payment_prepaid?
-          @user.send_confirmation_instructions
-          render 'payments/prepaid_complete'
         end
 
       else

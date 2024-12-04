@@ -164,7 +164,7 @@ END_OF_MESSAGE_HEADER
 
     msg = <<END_OF_MESSAGE
 A vote has been started regarding #{referral.legislation.reference}.
-The vote will conclude at #{finish_at.to_s(:long_with_time)}.
+The vote will conclude at #{finish_at.to_fs(:long_with_time)}.
 
 Please go to your LegSim Desk to cast your vote.
 END_OF_MESSAGE

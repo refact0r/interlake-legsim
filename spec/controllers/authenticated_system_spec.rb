@@ -6,7 +6,7 @@ require 'rails_helper'
 #include AuthenticatedSystem
 def action_name() end
 
-describe SessionsController do
+describe Users::SessionsController do
   fixtures :users
   
   before do

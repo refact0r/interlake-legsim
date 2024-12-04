@@ -176,7 +176,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -186,7 +186,7 @@ GEM
     mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.17.0)
-    mysql2 (0.5.3)
+    mysql2 (0.5.6)
     net-imap (0.3.4)
       date
       net-protocol
@@ -200,7 +200,7 @@ GEM
       net-protocol
     net-ssh (7.0.1)
     nio4r (2.5.8)
-    nokogiri (1.13.10-x86_64-linux)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     puma (6.0.2)
@@ -334,7 +334,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   mail
-  mysql2 (= 0.5.3)
+  mysql2 (= 0.5.6)
   net-smtp
   puma (= 6.0.2)
   rails (~> 7.0.4)
