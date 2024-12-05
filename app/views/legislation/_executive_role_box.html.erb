@@ -18,7 +18,7 @@
             <tr>
               <td class="<%= legislation.status %>"><%= link_to_legislation( legislation ) %> 
                 <% if @current_chamber_role.is_administrator? | @current_chamber_role.is_executive? %>
-                  <%= form_tag legislation do %>
+                  <%= form_with url: sign_or_veto_legislation_path(legislation), method: :post do %>
                     <%= hidden_field_tag :id, legislation.id %>
                   
                   <%= submit_tag 'sign', :class => 'btn blue-btn'%> <%= submit_tag 'veto', :class => 'btn red-btn' %>
