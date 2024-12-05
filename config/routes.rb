@@ -90,6 +90,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
     put :add_cosponsor, on: :member
     put :remove_cosponsor, on: :member
+    member do
+      post 'sign_or_veto', to: 'executives#create'
+    end
   end
   resources :committees do
     get :membership_requests, on: :collection
