@@ -23,5 +23,7 @@ storage/*
 /config/master.key
 /vendor/bundle
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentials and more and the actual credential files.
 /config/master.key
+/config/yml.enc
+
